@@ -3,41 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <title>تخمین طول عمر توسط MOZAREX™</title>
+    <style>
+        body {
+            direction: rtl;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Tahoma', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 85%;
+            max-width: 700px;
+            background-color: #fff;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .logo-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logo {
+            width: 100px;
+        }
+        .explanation {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+    </style>
 </head>
 <body>
-    <h1>تخمین طول عمر توسط MOZAREX™</h1>
-    <form method="POST">
-        <label>آیا هر دو والدین شما به سن ۸۵ سال یا بیشتر رسیده‌اند؟</label>
-        <select name="family_history">
-            <option value="بله">بله</option>
-            <option value="خیر">خیر</option>
-        </select><br><br>
+    <div class="container">
+        <h1>تخمین طول عمر توسط MOZAREX™</h1>
+        <form method="POST">
+            <label>آیا هر دو والدین شما به سن ۸۵ سال یا بیشتر رسیده‌اند؟</label>
+            <select name="family_history">
+                <option value="بله">بله</option>
+                <option value="خیر">خیر</option>
+            </select>
 
-        <label>تعداد روزهای هفته که ورزش و فعالیت بدنی دارید:</label>
-        <input type="number" name="exercise" min="0" max="7" required><br><br>
+            <label>تعداد روزهای هفته که ورزش و فعالیت بدنی دارید:</label>
+            <input type="number" name="exercise" min="0" max="7" required>
+            <div class="explanation">ورزش منظم می‌تواند سلامت قلب را بهبود بخشد و طول عمر را افزایش دهد.</div>
 
-        <label>آیا سیگار می‌کشید؟</label>
-        <select name="smoking">
-            <option value="بله">بله</option>
-            <option value="خیر">خیر</option>
-        </select><br><br>
+            <label>آیا سیگار می‌کشید؟</label>
+            <select name="smoking">
+                <option value="بله">بله</option>
+                <option value="خیر">خیر</option>
+            </select>
+            <div class="explanation">ترک سیگار می‌تواند خطر بیماری‌های قلبی و ریوی را کاهش دهد.</div>
 
-        <label>کیفیت رژیم غذایی خود را ارزیابی کنید (از ۱ تا ۵):</label>
-        <input type="number" name="diet" min="1" max="5" required><br><br>
+            <label>کیفیت رژیم غذایی خود را ارزیابی کنید (از ۱ تا ۵):</label>
+            <input type="number" name="diet" min="1" max="5" required>
+            <div class="explanation">رژیم غذایی سالم شامل مصرف میوه‌ها، سبزیجات و پروتئین‌های مفید است.</div>
 
-        <label>میانگین خواب (ساعت در شب):</label>
-        <input type="number" name="sleep" min="0" max="24" required><br><br>
+            <label>میانگین خواب (ساعت در شب):</label>
+            <input type="number" name="sleep" min="0" max="24" required>
+            <div class="explanation">خواب کافی به بهبود عملکرد مغز و کاهش استرس کمک می‌کند.</div>
 
-        <label>سطح درآمد شما (مقیاس ۱ تا ۱۰):</label>
-        <input type="number" name="income" min="1" max="10" required><br><br>
+            <label>سطح درآمد شما (مقیاس ۱ تا ۱۰):</label>
+            <input type="number" name="income" min="1" max="10" required>
+            <div class="explanation">درآمد بالاتر معمولاً به دسترسی بهتر به مراقبت‌های بهداشتی و تغذیه مناسب منجر می‌شود.</div>
 
-        <label>تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
-        <input type="number" name="social" min="0" max="7" required><br><br>
+            <label>تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
+            <input type="number" name="social" min="0" max="7" required>
+            <div class="explanation">روابط اجتماعی قوی می‌توانند سلامت روان را بهبود بخشند.</div>
 
-        <label>سطح استرس متوسط (از ۱ تا ۱۰):</label>
-        <input type="number" name="stress" min="1" max="10" required><br><br>
+            <label>سطح استرس متوسط (از ۱ تا ۱۰):</label>
+            <input type="number" name="stress" min="1" max="10" required>
+            <div class="explanation">مدیریت استرس می‌تواند خطر بیماری‌های مزمن را کاهش دهد.</div>
 
-        <button type="submit">محاسبه طول عمر</button>
-    </form>
+            <button type="submit">محاسبه طول عمر</button>
+        </form>
+        <div class="logo-container">
+            <img src="/static/logo.jpeg" alt="Logo" class="logo">
+        </div>
+        <div class="footer">
+            &copy; 2025 MOZAREX™. تمامی حقوق محفوظ است.
+        </div>
+    </div>
 </body>
 </html>
