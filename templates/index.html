@@ -1,3 +1,4 @@
+%%writefile templates/index.html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -28,16 +29,48 @@
         .logo {
             width: 100px;
         }
-        .explanation {
-            font-size: 12px;
-            color: #7f8c8d;
-            margin-bottom: 10px;
-        }
         .footer {
             text-align: center;
             margin-top: 20px;
             font-size: 12px;
             color: #95a5a6;
+        }
+        .question {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .explanation {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        button {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 50%;
+        }
+        button:hover {
+            background-color: #2ecc71;
         }
     </style>
 </head>
@@ -45,45 +78,58 @@
     <div class="container">
         <h1>تخمین طول عمر توسط MOZAREX™</h1>
         <form method="POST">
-            <label>آیا هر دو والدین شما به سن ۸۵ سال یا بیشتر رسیده‌اند؟</label>
-            <select name="family_history">
-                <option value="بله">بله</option>
-                <option value="خیر">خیر</option>
-            </select>
+            <div class="question">
+                <label>آیا هر دو والدین شما به سن ۸۵ سال یا بیشتر رسیده‌اند؟</label>
+                <select name="family_history">
+                    <option value="بله">بله</option>
+                    <option value="خیر">خیر</option>
+                </select>
+            </div>
 
-            <label>تعداد روزهای هفته که ورزش و فعالیت بدنی دارید:</label>
-            <input type="number" name="exercise" min="0" max="7" required>
-            <div class="explanation">ورزش منظم می‌تواند سلامت قلب را بهبود بخشد و طول عمر را افزایش دهد.</div>
+            <div class="question">
+                <label>تعداد روزهای هفته که ورزش و فعالیت بدنی دارید:</label>
+                <input type="number" name="exercise" min="0" max="7" required>
+            </div>
 
-            <label>آیا سیگار می‌کشید؟</label>
-            <select name="smoking">
-                <option value="بله">بله</option>
-                <option value="خیر">خیر</option>
-            </select>
-            <div class="explanation">ترک سیگار می‌تواند خطر بیماری‌های قلبی و ریوی را کاهش دهد.</div>
+            <div class="question">
+                <label>آیا سیگار می‌کشید؟</label>
+                <select name="smoking">
+                    <option value="بله">بله</option>
+                    <option value="خیر">خیر</option>
+                </select>
+            </div>
 
-            <label>کیفیت رژیم غذایی خود را ارزیابی کنید (از ۱ تا ۵):</label>
-            <input type="number" name="diet" min="1" max="5" required>
-            <div class="explanation">رژیم غذایی سالم شامل مصرف میوه‌ها، سبزیجات و پروتئین‌های مفید است.</div>
+            <div class="question">
+                <label>کیفیت رژیم غذایی خود را ارزیابی کنید (از ۱ تا ۵):</label>
+                <input type="number" name="diet" min="1" max="5" required>
+                <div class="explanation">عدد بالاتر یعنی رژیم غذایی سالم‌تر و متعادل‌تر.</div>
+            </div>
 
-            <label>میانگین خواب (ساعت در شب):</label>
-            <input type="number" name="sleep" min="0" max="24" required>
-            <div class="explanation">خواب کافی به بهبود عملکرد مغز و کاهش استرس کمک می‌کند.</div>
+            <div class="question">
+                <label>میانگین خواب (ساعت در شب):</label>
+                <input type="number" name="sleep" min="0" max="24" required>
+            </div>
 
-            <label>سطح درآمد شما (مقیاس ۱ تا ۱۰):</label>
-            <input type="number" name="income" min="1" max="10" required>
-            <div class="explanation">درآمد بالاتر معمولاً به دسترسی بهتر به مراقبت‌های بهداشتی و تغذیه مناسب منجر می‌شود.</div>
+            <div class="question">
+                <label>سطح درآمد شما (مقیاس ۱ تا ۱۰):</label>
+                <input type="number" name="income" min="1" max="10" required>
+                <div class="explanation">عدد بالاتر به معنی درآمد بیشتر، دسترسی بهتر به خدمات و شرایط اقتصادی مطلوب است.</div>
+            </div>
 
-            <label>تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
-            <input type="number" name="social" min="0" max="7" required>
-            <div class="explanation">روابط اجتماعی قوی می‌توانند سلامت روان را بهبود بخشند.</div>
+            <div class="question">
+                <label>تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
+                <input type="number" name="social" min="0" max="7" required>
+            </div>
 
-            <label>سطح استرس متوسط (از ۱ تا ۱۰):</label>
-            <input type="number" name="stress" min="1" max="10" required>
-            <div class="explanation">مدیریت استرس می‌تواند خطر بیماری‌های مزمن را کاهش دهد.</div>
+            <div class="question">
+                <label>سطح استرس متوسط (از ۱ تا ۱۰):</label>
+                <input type="number" name="stress" min="1" max="10" required>
+                <div class="explanation">عدد بالاتر نشان دهنده سطح بالاتر استرس است.</div>
+            </div>
 
             <button type="submit">محاسبه طول عمر</button>
         </form>
+
         <div class="logo-container">
             <img src="/static/logo.jpeg" alt="Logo" class="logo">
         </div>
