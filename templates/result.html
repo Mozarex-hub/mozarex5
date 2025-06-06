@@ -1,45 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>نتیجه تخمین طول عمر</title>
+    <title>تخمین طول عمر توسط MOZAREX™ - نتیجه</title>
     <style>
-        body {
-            direction: rtl;
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
-            font-family: 'Tahoma', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 85%;
-            max-width: 700px;
-            background-color: #fff;
-            margin: 40px auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .logo-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .logo {
-            width: 100px;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #95a5a6;
-        }
+      body {
+        direction: rtl;
+        background: linear-gradient(to left, #ece9e6, #ffffff);
+        font-family: 'Tahoma', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 85%%;
+        max-width: 700px;
+        background-color: #fff;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        text-align: center;
+      }
+      h1 {
+        color: #2980b9;
+      }
+      p {
+        font-size: 18px;
+        color: #34495e;
+      }
+      .logo-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .logo {
+        width: 100px;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+        color: #95a5a6;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>طول عمر تخمینی شما</h1>
-        <p>بر اساس پاسخ‌های شما، طول عمر تخمینی شما <strong>{{ result }}</strong>  است.</p>
+      <h1>طول عمر تخمینی شما</h1>
+      <p>{{ result }}</p>
+
         <a href="/">محاسبه مجدد</a>
         <div class="logo-container">
             <img src="/static/logo.jpeg" alt="Logo" class="logo">
