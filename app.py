@@ -28,7 +28,7 @@ def questionnaire():
         if smoking == "بله":
             score -= 10
         
-        result_message = f ": {round(score, 1)} سال"
+        result_message = f"طول عمر تخمینی: {round(score, 1)} سال"
         return render_template("result.html", result=result_message)
     
     return render_template("index.html")
