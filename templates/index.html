@@ -1,140 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>تخمین طول عمر توسط MOZAREX™</title>
     <style>
-        body {
-            direction: rtl;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            font-family: 'Tahoma', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 85%;
-            max-width: 700px;
-            background-color: #fff;
-            margin: 40px auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .logo-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .logo {
-            width: 100px;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #95a5a6;
-        }
-        .question {
-            margin-bottom: 20px;
-            text-align: right;
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .explanation {
-            font-size: 12px;
-            color: #7f8c8d;
-            margin-top: -10px;
-            margin-bottom: 20px;
-            text-align: right;
-        }
-        button {
-            background-color: #27ae60;
-            color: #fff;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 50%;
-        }
-        button:hover {
-            background-color: #2ecc71;
-        }
+      body {
+        direction: rtl;
+        background: linear-gradient(to left, #ece9e6, #ffffff);
+        font-family: 'Tahoma', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 85%%;
+        max-width: 700px;
+        background-color: #fff;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      .title-box {
+        background-color: #2980b9;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .title-box h1 {
+        margin: 0;
+        font-size: 28px;
+      }
+      .title-box p {
+        margin: 0;
+        font-size: 16px;
+      }
+      h2 {
+        color: #e74c3c;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        color: #2c3e50;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .radio-group {
+        margin-top: 8px;
+        margin-bottom: 16px;
+      }
+      input[type="radio"] {
+        margin-right: 5px;
+      }
+      .explanation {
+        font-size: 12px;
+        color: #7f8c8d;
+        margin-bottom: 10px;
+      }
+      .submit-container {
+        text-align: center;
+        margin-top: 30px;
+      }
+      input[type="submit"] {
+        background-color: #27ae60;
+        color: #fff;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 50%%;
+      }
+      input[type="submit"]:hover {
+        background-color: #2ecc71;
+      }
+      .logo-container {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .logo {
+        width: 100px;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+        color: #95a5a6;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
+      <div class="title-box">
         <h1>تخمین طول عمر توسط MOZAREX™</h1>
-        <form method="POST">
-            <div class="question">
-                <label>آیا هر دو والدین شما به سن ۸۵ سال یا بیشتر رسیده‌اند؟</label>
-                <select name="family_history">
-                    <option value="بله">بله</option>
-                    <option value="خیر">خیر</option>
-                </select>
-            </div>
-
-            <div class="question">
-                <label>تعداد روزهای هفته که ورزش و فعالیت بدنی دارید:</label>
-                <input type="number" name="exercise" min="0" max="7" required>
-            </div>
-
-            <div class="question">
-                <label>آیا سیگار می‌کشید؟</label>
-                <select name="smoking">
-                    <option value="بله">بله</option>
-                    <option value="خیر">خیر</option>
-                </select>
-            </div>
-
-            <div class="question">
-                <label>کیفیت رژیم غذایی خود را ارزیابی کنید (از ۱ تا ۵):</label>
-                <input type="number" name="diet" min="1" max="5" required>
-                <div class="explanation">عدد بالاتر یعنی رژیم غذایی سالم‌تر و متعادل‌تر.</div>
-            </div>
-
-            <div class="question">
-                <label>میانگین خواب (ساعت در شب):</label>
-                <input type="number" name="sleep" min="0" max="24" required>
-            </div>
-
-            <div class="question">
-                <label>سطح درآمد شما (مقیاس ۱ تا ۱۰):</label>
-                <input type="number" name="income" min="1" max="10" required>
-                <div class="explanation">عدد بالاتر به معنی درآمد بیشتر، دسترسی بهتر به خدمات و شرایط اقتصادی مطلوب است.</div>
-            </div>
-
-            <div class="question">
-                <label>تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
-                <input type="number" name="social" min="0" max="7" required>
-            </div>
-
-            <div class="question">
-                <label>سطح استرس متوسط (از ۱ تا ۱۰):</label>
-                <input type="number" name="stress" min="1" max="10" required>
-                <div class="explanation">عدد بالاتر نشان دهنده سطح بالاتر استرس است.</div>
-            </div>
-
-            <button type="submit">محاسبه طول عمر</button>
-        </form>
-
-        <div class="logo-container">
-            <img src="/static/logo.jpeg" alt="Logo" class="logo">
+        <p>version 1.0</p>
+      </div>
+      <form method="post">
+        <h2>سابقه خانوادگی و ژنتیک</h2>
+        <label>آیا هر دو والدین شما به سن ۸۵ سال یا بیشتر رسیده‌اند؟</label>
+        <div class="radio-group">
+          <input type="radio" id="family_yes" name="family_history" value="بله" required>
+          <label for="family_yes" style="display:inline; color: #2980b9;">بله</label>
+          <input type="radio" id="family_no" name="family_history" value="خیر" required>
+          <label for="family_no" style="display:inline; color: #c0392b;">خیر</label>
         </div>
-        <div class="footer">
-            &copy; 2025 MOZAREX™. تمامی حقوق محفوظ است.
+
+        <h2>عادات زندگی</h2>
+        <label for="exercise">تعداد روزهای هفته که ورزش و فعالیت بدنی دارید:</label>
+        <input type="number" id="exercise" name="exercise" min="0" max="7" required>
+
+        <label>آیا سیگار می‌کشید؟</label>
+        <div class="radio-group">
+          <input type="radio" id="smoking_yes" name="smoking" value="بله" required>
+          <label for="smoking_yes" style="display:inline; color: #2980b9;">بله</label>
+          <input type="radio" id="smoking_no" name="smoking" value="خیر" required>
+          <label for="smoking_no" style="display:inline; color: #c0392b;">خیر</label>
         </div>
+
+        <label for="diet">کیفیت رژیم غذایی خود را ارزیابی کنید (از ۱ تا ۵):</label>
+        <input type="number" id="diet" name="diet" min="1" max="5" required>
+        <div class="explanation">
+          عدد بالاتر یعنی رژیم غذایی سالم‌تر و متعادل‌تر.
+        </div>
+        
+        <label for="sleep">میانگین خواب (ساعت در شب):</label>
+        <input type="number" id="sleep" name="sleep" min="0" max="24" required>
+
+        <h2>عوامل محیطی و اقتصادی</h2>
+        <label for="income">سطح درآمد شما (مقیاس ۱ تا ۱۰):</label>
+        <input type="number" id="income" name="income" min="1" max="10" required>
+        <div class="explanation">
+          عدد بالاتر به معنی درآمد بیشتر، دسترسی بهتر به خدمات و شرایط اقتصادی مطلوب است.
+        </div>
+
+        <h2>روابط اجتماعی و روانشناسی</h2>
+        <label for="social">تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
+        <input type="number" id="social" name="social" min="0" max="7" required>
+
+        <label for="stress">سطح استرس متوسط (از ۱ تا ۱۰):</label>
+        <input type="number" id="stress" name="stress" min="1" max="10" required>
+        <div class="explanation">
+          عدد بالاتر نشان دهنده سطح بالاتر استرس است.
+        </div>
+        
+        <div class="submit-container">
+          <input type="submit" value="ارسال">
+        </div>
+      </form>
+      <div class="logo-container">
+        <img src="/static/logo.jpeg" alt="Logo" class="logo">
+      </div>
+      <div class="footer">
+        &copy; 2025 MOZAREX™. تمام حقوق محفوظ است.
+      </div>
     </div>
-</body>
+  </body>
 </html>
+"""
