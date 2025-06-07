@@ -12,7 +12,7 @@
         padding: 0;
       }
       .container {
-        width: 85%%;
+        width: 85%;
         max-width: 700px;
         background-color: #fff;
         margin: 40px auto;
@@ -27,6 +27,51 @@
       p {
         font-size: 18px;
         color: #34495e;
+      }
+      .result-box {
+        font-size: 22px;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-top: 20px;
+      }
+      .low {
+        background-color: #e74c3c;
+        color: #fff;
+      }
+      .medium {
+        background-color: #f39c12;
+        color: #fff;
+      }
+      .high {
+        background-color: #27ae60;
+        color: #fff;
+      }
+      .advice {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #2c3e50;
+        padding: 15px;
+        background-color: #ecf0f1;
+        border-radius: 8px;
+      }
+      .button-container {
+        margin-top: 30px;
+      }
+      .button {
+        background-color: #2980b9;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .button:hover {
+        background-color: #3498db;
       }
       .logo-container {
         text-align: center;
@@ -46,15 +91,32 @@
   <body>
     <div class="container">
       <h1>طول عمر تخمینی شما</h1>
-      <p>{{ result }}</p>
+      
+      <div class="result-box {% if result|int < 60 %}low{% elif result|int < 80 %}medium{% else %}high{% endif %}">
+        <p>{{ result }}</p>
+      </div>
 
-        <a href="/">محاسبه مجدد</a>
-        <div class="logo-container">
-            <img src="/static/logo.jpeg" alt="Logo" class="logo">
-        </div>
-        <div class="footer">
-            &copy; 2025 MOZAREX™. تمامی حقوق محفوظ است.
-        </div>
+      <div class="advice">
+        {% if result|int < 60 %}
+          <p>🔴 توصیه: سبک زندگی سالم‌تری را در پیش بگیرید! ورزش منظم، تغذیه سالم و کاهش استرس می‌تواند تأثیر زیادی داشته باشد.</p>
+        {% elif result|int < 80 %}
+          <p>🟠 توصیه: شما در وضعیت متوسطی هستید. با بهبود کیفیت خواب، افزایش فعالیت بدنی و کاهش مصرف مواد مضر، می‌توانید طول عمر خود را افزایش دهید.</p>
+        {% else %}
+          <p>🟢 عالی! شما سبک زندگی سالمی دارید. حفظ این روند و مراقبت از سلامت روانی و جسمی می‌تواند به طول عمر بیشتر کمک کند.</p>
+        {% endif %}
+      </div>
+
+      <div class="button-container">
+        <a href="/" class="button">🔄 محاسبه مجدد</a>
+      </div>
+
+      <div class="logo-container">
+        <img src="/static/logo.jpeg" alt="Logo" class="logo">
+      </div>
+
+      <div class="footer">
+        &copy; 2025 MOZAREX™. تمامی حقوق محفوظ است.
+      </div>
     </div>
-</body>
+  </body>
 </html>
