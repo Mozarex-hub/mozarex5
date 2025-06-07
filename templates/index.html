@@ -12,7 +12,7 @@
         padding: 0;
       }
       .container {
-        width: 85%%;
+        width: 85%;
         max-width: 700px;
         background-color: #fff;
         margin: 40px auto;
@@ -50,7 +50,7 @@
       }
       input[type="text"],
       input[type="number"] {
-        width: 100%%;
+        width: 100%;
         padding: 10px;
         margin-top: 8px;
         margin-bottom: 16px;
@@ -82,7 +82,7 @@
         border-radius: 4px;
         cursor: pointer;
         font-size: 16px;
-        width: 50%%;
+        width: 50%;
       }
       input[type="submit"]:hover {
         background-color: #2ecc71;
@@ -106,7 +106,7 @@
     <div class="container">
       <div class="title-box">
         <h1>تخمین طول عمر توسط MOZAREX™</h1>
-        <p>version 1.0</p>
+        <p>version 1.1</p>
       </div>
       <form method="post">
         <h2>سابقه خانوادگی و ژنتیک</h2>
@@ -130,21 +130,21 @@
           <label for="smoking_no" style="display:inline; color: #c0392b;">خیر</label>
         </div>
 
-        <label for="diet">کیفیت رژیم غذایی خود را ارزیابی کنید (از ۱ تا ۵):</label>
-        <input type="number" id="diet" name="diet" min="1" max="5" required>
-        <div class="explanation">
-          عدد بالاتر یعنی رژیم غذایی سالم‌تر و متعادل‌تر.
-        </div>
-        
-        <label for="sleep">میانگین خواب (ساعت در شب):</label>
-        <input type="number" id="sleep" name="sleep" min="0" max="24" required>
+        <label for="alcohol">میزان مصرف الکل (در هفته):</label>
+        <input type="number" id="alcohol" name="alcohol" min="0" max="20" required>
+
+        <label for="chronic">آیا بیماری مزمن دارید؟</label>
+        <input type="text" id="chronic" name="chronic">
+
+        <label for="mental_activity">سطح فعالیت ذهنی (از ۱ تا ۱۰):</label>
+        <input type="number" id="mental_activity" name="mental_activity" min="1" max="10" required>
 
         <h2>عوامل محیطی و اقتصادی</h2>
-        <label for="income">سطح درآمد شما (مقیاس ۱ تا ۱۰):</label>
-        <input type="number" id="income" name="income" min="1" max="10" required>
-        <div class="explanation">
-          عدد بالاتر به معنی درآمد بیشتر، دسترسی بهتر به خدمات و شرایط اقتصادی مطلوب است.
-        </div>
+        <label for="pollution">میزان آلودگی هوای محل زندگی (از ۱ تا ۱۰):</label>
+        <input type="number" id="pollution" name="pollution" min="1" max="10" required>
+
+        <label for="healthcare">تعداد مراجعات به پزشک در سال:</label>
+        <input type="number" id="healthcare" name="healthcare" min="0" max="50" required>
 
         <h2>روابط اجتماعی و روانشناسی</h2>
         <label for="social">تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
@@ -152,10 +152,7 @@
 
         <label for="stress">سطح استرس متوسط (از ۱ تا ۱۰):</label>
         <input type="number" id="stress" name="stress" min="1" max="10" required>
-        <div class="explanation">
-          عدد بالاتر نشان دهنده سطح بالاتر استرس است.
-        </div>
-        
+
         <div class="submit-container">
           <input type="submit" value="ارسال">
         </div>
@@ -169,4 +166,3 @@
     </div>
   </body>
 </html>
-"""
