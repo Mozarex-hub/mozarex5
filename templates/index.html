@@ -130,11 +130,16 @@
           <label for="smoking_no" style="display:inline; color: #c0392b;">خیر</label>
         </div>
 
-        <label for="alcohol">میزان مصرف الکل (در هفته):</label>
+        <label for="alcohol">میزان مصرف الکل (روز در هفته):</label>
         <input type="number" id="alcohol" name="alcohol" min="0" max="20" required>
 
-        <label for="chronic">آیا بیماری مزمن دارید؟</label>
-        <input type="text" id="chronic" name="chronic">
+        <label>آیا بیماری مزمن دارید؟</label>
+        <div class="radio-group">
+          <input type="radio" id="chronic_yes" name="chronic" value="بله" required>
+          <label for="chronic_yes" style="display:inline; color: #2980b9;">بله</label>
+          <input type="radio" id="chronic_no" name="chronic" value="خیر" required>
+          <label for="chronic_no" style="display:inline; color: #c0392b;">خیر</label>
+        </div>
 
         <label for="mental_activity">سطح فعالیت ذهنی (از ۱ تا ۱۰):</label>
         <input type="number" id="mental_activity" name="mental_activity" min="1" max="10" required>
