@@ -3,117 +3,185 @@
   <head>
     <meta charset="UTF-8">
     <title>تخمین طول عمر توسط MOZAREX™ - نتیجه</title>
+    <!-- Imported Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-      body {
-        direction: rtl;
-        background: linear-gradient(to left, #ece9e6, #ffffff);
-        font-family: 'Tahoma', Arial, sans-serif;
+      :root {
+        --primary-color: #27ae60;
+        --secondary-color: #2ecc71;
+        --accent-color: #ff7675;
+        --luxury-color: #d4af37;
+        --bg-gradient-start: #0f2027;
+        --bg-gradient-middle: #203a43;
+        --bg-gradient-end: #2c5364;
+      }
+      
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
+      
+      body {
+        direction: rtl;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(to left, var(--bg-gradient-start), var(--bg-gradient-middle), var(--bg-gradient-end));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      
       .container {
-        width: 85%;
+        width: 90%;
         max-width: 700px;
-        background-color: #fff;
-        margin: 40px auto;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        color: #f0f0f0;
         text-align: center;
+        animation: fadeIn 1s ease-in-out;
       }
-      h1 {
-        color: #2980b9;
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
       }
-      p {
-        font-size: 18px;
-        color: #34495e;
+      
+      .title-box {
+        margin-bottom: 30px;
       }
+      
+      .title-box h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 2.4rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+      
+      .version {
+        font-size: 1.1rem;
+        color: var(--luxury-color);
+      }
+      
       .result-box {
-        font-size: 22px;
+        font-size: 2rem;
         font-weight: bold;
-        padding: 15px;
-        border-radius: 8px;
+        padding: 20px;
+        border-radius: 12px;
         display: inline-block;
-        margin-top: 20px;
+        margin: 20px 0;
       }
+      /* Color-coded classes for different result ranges */
       .low {
         background-color: #e74c3c;
         color: #fff;
       }
-      .medium {
+      .moderate {
         background-color: #f39c12;
         color: #fff;
       }
-      .high {
+      .good {
+        background-color: #f1c40f;
+        color: #fff;
+      }
+      .excellent {
         background-color: #27ae60;
         color: #fff;
       }
+      
       .advice {
         margin-top: 20px;
-        font-size: 16px;
-        color: #2c3e50;
-        padding: 15px;
-        background-color: #ecf0f1;
-        border-radius: 8px;
+        font-size: 1.2rem;
+        color: #ecf0f1;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        line-height: 1.5;
       }
+      
       .button-container {
         margin-top: 30px;
       }
+      
       .button {
-        background-color: #2980b9;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: #fff;
-        padding: 12px 20px;
+        padding: 14px 26px;
         border: none;
-        border-radius: 4px;
+        border-radius: 8px;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 1.2rem;
         text-decoration: none;
-        display: inline-block;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, background 0.3s;
       }
+      
       .button:hover {
-        background-color: #3498db;
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
       }
+      
       .logo-container {
+        margin-top: 30px;
         text-align: center;
-        margin-top: 20px;
       }
+      
       .logo {
-        width: 100px;
+        width: 120px;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
       }
+      
       .footer {
-        text-align: center;
         margin-top: 20px;
-        font-size: 12px;
-        color: #95a5a6;
+        font-size: 0.85rem;
+        color: #dfe6e9;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>طول عمر تخمینی شما</h1>
+      <div class="title-box">
+        <h1>طول عمر تخمینی شما</h1>
+        <p class="version">version 1.2</p>
+      </div>
       
-      <div class="result-box {% if result|int < 60 %}low{% elif result|int < 80 %}medium{% else %}high{% endif %}">
+      <!--
+        The result-box class is dynamically assigned based on the result:
+         - If result is less than 60: "low" (red)
+         - If result is between 60 and 69: "moderate" (orange)
+         - If result is between 70 and 79: "good" (yellow)
+         - Otherwise, "excellent" (green)
+      -->
+      <div class="result-box {% if result|int < 60 %}low{% elif result|int < 70 %}moderate{% elif result|int < 80 %}good{% else %}excellent{% endif %}">
         <p>{{ result }}</p>
       </div>
-
+      
+      <!-- Different health advices according to predicted age ranges -->
       <div class="advice">
         {% if result|int < 60 %}
-          <p>🔴 توصیه: سبک زندگی سالم‌تری را در پیش بگیرید! ورزش منظم، تغذیه سالم و کاهش استرس می‌تواند تأثیر زیادی داشته باشد.</p>
+          <p>🔴 هشدار: پیش‌بینی ما نشان می‌دهد که طول عمر شما کمتر از 60 سال است. لازم است تغییرات چشمگیری در رژیم غذایی، برنامه ورزشی منظم و استرس‌زدایی ایجاد نمایید.</p>
+        {% elif result|int < 70 %}
+          <p>🟠 وضعیت متوسط: پیش‌بینی ما بین 60 تا 70 سال را نشان می‌دهد. بهبود عادات زندگی از قبیل تغذیه بهداشتی، خواب کافی و فعالیت بدنی می‌تواند به افزایش طول عمر کمک کند.</p>
         {% elif result|int < 80 %}
-          <p>🟠 توصیه: شما در وضعیت متوسطی هستید. با بهبود کیفیت خواب، افزایش فعالیت بدنی و کاهش مصرف مواد مضر، می‌توانید طول عمر خود را افزایش دهید.</p>
+          <p>🟡 خوب: طول عمر شما بین 70 تا 80 سال تخمین زده می‌شود. با حفظ فعالیت‌های سالم و افزودن تمرینات ذهنی مانند مدیتیشن، می‌توانید کیفیت زندگی خود را ارتقا دهید.</p>
         {% else %}
-          <p>🟢 عالی! شما سبک زندگی سالمی دارید. حفظ این روند و مراقبت از سلامت روانی و جسمی می‌تواند به طول عمر بیشتر کمک کند.</p>
+          <p>🟢 عالی: شما در مسیر سلامت و تندرستی قرار دارید. پیش‌بینی ما بیش از 80 سال برای شما نشان می‌دهد؛ ادامه این سبک زندگی سالم به حفظ و ارتقا سلامتی شما کمک خواهد کرد.</p>
         {% endif %}
       </div>
-
+      
       <div class="button-container">
         <a href="/" class="button">🔄 محاسبه مجدد</a>
       </div>
-
+      
       <div class="logo-container">
         <img src="/static/logo.jpeg" alt="Logo" class="logo">
       </div>
-
+      
       <div class="footer">
         &copy; 2025 MOZAREX™. تمامی حقوق محفوظ است.
       </div>
