@@ -36,11 +36,11 @@
       .container {
         width: 90%;
         max-width: 700px;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        border-radius: 16px;
-        padding: 30px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         color: #f0f0f0;
         text-align: center;
         animation: fadeIn 1s ease-in-out;
@@ -57,7 +57,7 @@
       
       .title-box h1 {
         font-family: 'Cinzel', serif;
-        font-size: 2.4rem;
+        font-size: 2.6rem;
         color: var(--primary-color);
         margin-bottom: 10px;
       }
@@ -68,28 +68,30 @@
       }
       
       .result-box {
-        font-size: 2rem;
+        font-size: 2.2rem;
         font-weight: bold;
-        padding: 20px;
-        border-radius: 12px;
+        padding: 25px 30px;
+        border-radius: 16px;
         display: inline-block;
-        margin: 20px 0;
+        margin: 30px 0;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       }
-      /* Color-coded classes for different result ranges */
+      
+      /* Updated modern gradients for different score ranges */
       .low {
-        background-color: #e74c3c;
+        background: linear-gradient(135deg, #ff6b6b, #c0392b);
         color: #fff;
       }
       .moderate {
-        background-color: #f39c12;
+        background: linear-gradient(135deg, #f39c12, #e67e22);
         color: #fff;
       }
       .good {
-        background-color: #f1c40f;
+        background: linear-gradient(135deg, #f1c40f, #f39c12);
         color: #fff;
       }
       .excellent {
-        background-color: #27ae60;
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
         color: #fff;
       }
       
@@ -97,10 +99,10 @@
         margin-top: 20px;
         font-size: 1.2rem;
         color: #ecf0f1;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 12px;
-        line-height: 1.5;
+        padding: 25px;
+        background: rgba(0, 0, 0, 0.35);
+        border-radius: 16px;
+        line-height: 1.6;
       }
       
       .button-container {
@@ -110,18 +112,19 @@
       .button {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: #fff;
-        padding: 14px 26px;
+        padding: 16px 30px;
         border: none;
-        border-radius: 8px;
+        border-radius: 12px;
         cursor: pointer;
         font-size: 1.2rem;
         text-decoration: none;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s, background 0.3s;
+        display: inline-block;
       }
       
       .button:hover {
-        transform: translateY(-3px);
+        transform: translateY(-4px);
         background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
       }
       
@@ -132,7 +135,7 @@
       
       .logo {
         width: 120px;
-        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
       }
       
       .footer {
@@ -158,19 +161,19 @@
          - Otherwise, "excellent" (green)
       -->
       <div class="result-box {% if result|int < 60 %}low{% elif result|int < 70 %}moderate{% elif result|int < 80 %}good{% else %}excellent{% endif %}">
-        <p>{{ result }}</p>
+        <p>{{ result }} سال</p>
       </div>
       
-      <!-- Different health advices according to predicted age ranges -->
+      <!-- Different health advice according to predicted age ranges -->
       <div class="advice">
         {% if result|int < 60 %}
           <p>🔴 هشدار: پیش‌بینی ما نشان می‌دهد که طول عمر شما کمتر از 60 سال است. لازم است تغییرات چشمگیری در رژیم غذایی، برنامه ورزشی منظم و استرس‌زدایی ایجاد نمایید.</p>
         {% elif result|int < 70 %}
-          <p>🟠 وضعیت متوسط: پیش‌بینی ما بین 60 تا 70 سال را نشان می‌دهد. بهبود عادات زندگی از قبیل تغذیه بهداشتی، خواب کافی و فعالیت بدنی می‌تواند به افزایش طول عمر کمک کند.</p>
+          <p>🟠 وضعیت متوسط: پیش‌بینی ما بین 60 تا 70 سال را نشان می‌دهد. با بهبود تغذیه، خواب کافی و کاهش استرس، می‌توانید قدم‌های مؤثری در جهت افزایش طول عمر بردارید.</p>
         {% elif result|int < 80 %}
-          <p>🟡 خوب: طول عمر شما بین 70 تا 80 سال تخمین زده می‌شود. با حفظ فعالیت‌های سالم و افزودن تمرینات ذهنی مانند مدیتیشن، می‌توانید کیفیت زندگی خود را ارتقا دهید.</p>
+          <p>🟡 خوب: طول عمر شما بین 70 تا 80 سال تخمین زده می‌شود. ادامه فعالیت‌های سالم و اضافه کردن تمرینات ذهنی مانند مدیتیشن می‌تواند به بهبود کیفیت زندگی شما کمک کند.</p>
         {% else %}
-          <p>🟢 عالی: شما در مسیر سلامت و تندرستی قرار دارید. پیش‌بینی ما بیش از 80 سال برای شما نشان می‌دهد؛ ادامه این سبک زندگی سالم به حفظ و ارتقا سلامتی شما کمک خواهد کرد.</p>
+          <p>🟢 عالی: پیش‌بینی ما بیش از 80 سال برای شما نشان می‌دهد. حفظ سبک زندگی سالم، فعالیت‌های ورزشی و مراقبت از سلامت روانی و جسمی شما را در مسیر تندرستی قرار می‌دهد.</p>
         {% endif %}
       </div>
       
