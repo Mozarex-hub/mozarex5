@@ -253,4 +253,65 @@
         <label for="social">تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
         <input type="number" id="social" name="social" min="0" max="7" required>
 
-        <label for="stress">سطح استرس متوسط (از ۱ تا ۱۰):</label
+        <label for="stress">سطح استرس متوسط (از ۱ تا ۱۰):</label>
+        <input type="number" id="stress" name="stress" min="1" max="10" required>
+
+        <!-- Additional Luxury Questions with Numbers and Clear Instructions -->
+        <h2 class="luxury-header">سوالات تکمیلی</h2>
+        <div class="question-item">
+          <p><strong>۱.</strong> از کیفیت تغذیه روزانه خود چقدر رضایت دارید؟</p>
+          <span class="instruction-text">لطفاً عددی از ۱ (بسیار ناراضی) تا ۱۰ (بسیار راضی) وارد کنید.</span>
+          <input type="number" name="nutrition" min="1" max="10" required>
+        </div>
+        <div class="question-item">
+          <p><strong>۲.</strong> کیفیت خواب شبانه شما چگونه ارزیابی می‌شود؟</p>
+          <span class="instruction-text">از ۱ (ضعیف) تا ۱۰ (عالی) انتخاب کنید.</span>
+          <input type="number" name="sleep_quality" min="1" max="10" required>
+        </div>
+        <div class="question-item">
+          <p><strong>۳.</strong> از سبک زندگی کلی خود چقدر رضایت دارید؟</p>
+          <span class="instruction-text">لطفاً عددی از ۱ (کم) تا ۱۰ (بیشتر) انتخاب کنید.</span>
+          <input type="number" name="lifestyle" min="1" max="10" required>
+        </div>
+        <div class="question-item">
+          <p><strong>۴.</strong> احساس تعادل و آرامش ذهنی شما چگونه است؟</p>
+          <span class="instruction-text">از ۱ (خیلی نابرابر) تا ۱۰ (کاملاً هموار) انتخاب کنید.</span>
+          <input type="number" name="mental_balance" min="1" max="10" required>
+        </div>
+        
+        <!-- New Additional Questions -->
+        <h2 class="luxury-header">سوالات جدید</h2>
+        <div class="question-item">
+          <p><strong>۵.</strong> چقدر از فعالیت‌های تفریحی و سرگرمی خود لذت می‌برید؟</p>
+          <span class="instruction-text">انتخاب کنید: ۱ (بسیار کم) تا ۱۰ (بسیار زیاد).</span>
+          <input type="number" name="entertainment" min="1" max="10" required>
+        </div>
+        <div class="question-item">
+          <p><strong>۶.</strong> سطح رضایت شما از محیط کار یا تحصیلی چقدر است؟</p>
+          <span class="instruction-text">لطفاً عددی از ۱ (نا رضایت) تا ۱۰ (راضی) انتخاب کنید.</span>
+          <input type="number" name="work_env" min="1" max="10" required>
+        </div>
+        <div class="question-item">
+          <p><strong>۷.</strong> تجربه کلی شما از استفاده از فناوری‌های نوین تا به حال چگونه بوده است؟</p>
+          <span class="instruction-text">انتخاب کنید: ۱ (منفی) تا ۱۰ (مثبت).</span>
+          <input type="number" name="tech_experience" min="1" max="10" required>
+        </div>
+        <div class="question-item">
+          <p><strong>۸.</strong> چقدر به موفقیت‌های پیش روی خود اعتقاد دارید؟</p>
+          <span class="instruction-text">انتخاب کنید: ۱ (کم) تا ۱۰ (زیاد).</span>
+          <input type="number" name="self_belief" min="1" max="10" required>
+        </div>
+
+        <div class="submit-container">
+          <input type="submit" value="ارسال">
+        </div>
+      </form>
+      <div class="logo-container">
+        <img src="/static/logo.jpeg" alt="Logo" class="logo">
+      </div>
+      <div class="footer">
+        &copy; 2025 MOZAREX™. تمام حقوق محفوظ است.
+      </div>
+    </div>
+  </body>
+</html>
