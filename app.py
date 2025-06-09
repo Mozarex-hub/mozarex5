@@ -6,66 +6,61 @@ app = Flask(__name__, static_url_path='/static', static_folder='static')
 @app.route("/", methods=["GET", "POST"])
 def questionnaire():
     if request.method == "POST":
+        # Retrieve basic questions
         family_history = request.form.get("family_history")
         exercise = float(request.form.get("exercise", 0))
         smoking = request.form.get("smoking")
         alcohol = float(request.form.get("alcohol", 0))
-        chronic = request.form.get("chronic")
-        mental_activity = int(request.form.get("mental_activity", 5))
-        diet = int(request.form.get("diet", 3))
-        sleep = float(request.form.get("sleep", 7))
-        income = int(request.form.get("income", 5))
         pollution = int(request.form.get("pollution", 5))
         healthcare = int(request.form.get("healthcare", 2))
         social = float(request.form.get("social", 3))
         stress = int(request.form.get("stress", 5))
-
-        # منطق تخمین طول عمر
-        score = 80  # مقدار پایه طول عمر
-
-        # تأثیر ورزش
-        score += exercise * 0.5
-
-        # تأثیر رژیم غذایی
-        score += (diet - 3) * 1.5
-
-        # تأثیر خواب
-        score += (sleep - 7) * 2
-
-        # تأثیر روابط اجتماعی
-        score += social * 0.5
-
-        # تأثیر استرس
-        score -= stress * 1.2
-
-        # تأثیر سابقه خانوادگی
+        
+        # Retrieve additional luxury questions
+        nutrition = int(request.form.get("nutrition", 5))
+        sleep_quality = float(request.form.get("sleep_quality", 5))
+        lifestyle = int(request.form.get("lifestyle", 5))
+        mental_balance = int(request.form.get("mental_balance", 5))
+        entertainment = int(request.form.get("entertainment", 5))
+        work_env = int(request.form.get("work_env", 5))
+        tech_experience = int(request.form.get("tech_experience", 5))
+        self_belief = int(request.form.get("self_belief", 5))
+        
+        # Calculate the longevity score with a base score of 80 years
+        score = 80
+        
+        # Effects on longevity
+        score += exercise * 0.5                            # Regular exercise improves longevity
+        score += (nutrition - 5) * 1.5                       # Better nutrition than average adds points
+        score += (sleep_quality - 5) * 1.8                   # Quality sleep relative to average (5) boosts score
+        score += (lifestyle - 5) * 1.2                       # Overall lifestyle satisfaction factor
+        score += (mental_balance - 5) * 1.2                  # Better mental equilibrium has a positive effect
+        score += social * 0.5                              # More social interactions yield benefits
+        score -= stress * 1.2                              # Higher stress detracts from longevity
+        
+        # Genetic and habit factors
         if family_history == "بله":
-            score += 5
-
-        # تأثیر سیگار و الکل
+            score += 5                                   # Favorable genetic background adds points
         if smoking == "بله":
-            score -= 10
-        score -= alcohol * 0.8  # مصرف بیشتر الکل تأثیر منفی دارد
-
-        # تأثیر بیماری‌های مزمن
-        if chronic and chronic.strip():
-            score -= 7  # اگر فرد بیماری مزمن دارد، امتیاز کاهش می‌یابد
-
-        # تأثیر فعالیت ذهنی
-        score += (mental_activity - 5) * 1.2  # فعالیت ذهنی بیشتر تأثیر مثبت دارد
-
-        # تأثیر آلودگی هوا
-        score -= (pollution - 5) * 1.5  # آلودگی بیشتر تأثیر منفی دارد
-
-        # تأثیر دسترسی به خدمات بهداشتی
-        score += healthcare * 0.7  # مراجعه بیشتر به پزشک تأثیر مثبت دارد
-
-        # محدود کردن مقدار طول عمر به بازه منطقی
+            score -= 10                                  # Smoking has a significant negative impact
+        score -= alcohol * 0.8                           # Alcohol consumption reduces longevity
+        
+        # Environmental and healthcare factors
+        score -= (pollution - 5) * 1.5                     # Living in heavily polluted areas deducts points
+        score += healthcare * 0.7                        # Better access to healthcare is positive
+        
+        # Additional lifestyle and psychological factors
+        score += (entertainment - 5) * 1.0                 # Enjoyment in leisure activities adds a bonus
+        score += (work_env - 5) * 1.0                      # Positive work or study environment is beneficial
+        score += (tech_experience - 5) * 0.5               # Comfort with modern technology adds marginally
+        score += (self_belief - 5) * 1.0                   # Confidence in personal success boosts longevity
+        
+        # Limit final score to a realistic range: between 40 and 120 years
         score = max(40, min(score, 120))
-
-        result_message = f"طول عمر تخمینی: {round(score, 1)} سال"
-        return render_template("result.html", result=result_message)
-
+        result = round(score, 1)
+        
+        return render_template("result.html", result=result)
+    
     return render_template("index.html")
 
 if __name__ == "__main__":
