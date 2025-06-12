@@ -1,5 +1,5 @@
 import random
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -9,6 +9,7 @@ ladders = {1: 38, 4: 14, 9: 31, 21: 42, 28: 84, 36: 44, 51: 67, 71: 91, 80: 100}
 human_position = 0
 computer_position = 0
 game_over = False
+last_message = ""
 
 def roll_dice():
     return random.randint(1, 6)
@@ -28,18 +29,20 @@ def move_player(position, dice_value):
 
 @app.route('/')
 def index():
+    global human_position, computer_position, game_over, last_message
+    # Reset game state for a new game
+    human_position = 0
+    computer_position = 0
+    game_over = False
+    last_message = ""
     return render_template('index.html')
 
 @app.route('/roll', methods=['POST'])
 def roll():
-    global human_position, computer_position, game_over
+    global human_position, computer_position, game_over, last_message
     if game_over:
-        return jsonify({
-            'human_position': human_position,
-            'computer_position': computer_position,
-            'message': 'Game over!',
-            'game_over': True
-        })
+        winner = "You won!" if human_position == 100 else "Computer won!"
+        return redirect(url_for('result', winner=winner, human_position=human_position, computer_position=computer_position, message=last_message))
 
     # Human's turn
     dice_value = roll_dice()
@@ -49,6 +52,7 @@ def roll():
     if human_position == 100:
         game_over = True
         message += "\n🎉 Congratulations! You won the game! 🎉"
+        last_message = message
         return jsonify({
             'human_position': human_position,
             'computer_position': computer_position,
@@ -64,13 +68,22 @@ def roll():
     if computer_position == 100:
         game_over = True
         message += "\n🤖 Computer wins! Better luck next time! 🤖"
-
+    
+    last_message = message
     return jsonify({
         'human_position': human_position,
         'computer_position': computer_position,
         'message': message,
         'game_over': game_over
     })
+
+@app.route('/result')
+def result():
+    winner = request.args.get('winner')
+    human_position = request.args.get('human_position')
+    computer_position = request.args.get('computer_position')
+    message = request.args.get('message').replace('\n', '<br>') if request.args.get('message') else ""
+    return render_template('result.html', winner=winner, human_position=human_position, computer_position=computer_position, message=message)
 
 if __name__ == '__main__':
     app.run(debug=True)
