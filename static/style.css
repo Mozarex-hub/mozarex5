@@ -1,43 +1,22 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
-    margin: 20px;
+    background-color: #f4f4f4;
 }
-.game-container, .result-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+
 h1 {
     color: #333;
 }
-.winner {
-    font-size: 24px;
-    font-weight: bold;
-    color: #4CAF50;
-    margin: 20px 0;
-}
+
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 5px;
+    cursor: pointer;
 }
+
 button:hover {
-    background-color: #45a049;
-}
-#game-status {
-    margin-top: 20px;
-    font-size: 18px;
-}
-#positions {
-    margin-top: 20px;
-    font-size: 16px;
+    background-color: #218838;
 }
