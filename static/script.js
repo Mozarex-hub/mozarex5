@@ -1,10 +1,7 @@
-async function rollDice() {
-    const response = await fetch('/roll', { method: 'POST' });
-    const data = await response.json();
-    document.getElementById('human-position').textContent = data.human_position;
-    document.getElementById('computer-position').textContent = data.human_position;
-    document.getElementById('game-status').innerHTML = data.message.replace(/\n/g, '<br>');
-    if (data.game_over) {
-        document.querySelector('button').disabled = true;
-    }
+function rollDice() {
+    fetch('/roll')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("dice-result").innerText = "You rolled a " + data.dice_value + "!";
+        });
 }
