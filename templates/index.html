@@ -1,69 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake and Ladder Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            margin: 20px;
-        }
-        .game-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #game-status {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-        #positions {
-            margin-top: 20px;
-            font-size: 16px;
-        }
-    </style>
-</head>
-<body>
-    <div class="game-container">
-        <h1>Snake and Ladder Game</h1>
-        <p>Click to roll the dice and play against the computer!</p>
-        <button onclick="rollDice()">Roll Dice</button>
-        <div id="positions">
-            <p>Human Position: <span id="human-position">0</span></p>
-            <p>Computer Position: <span id="computer-position">0</span></p>
-        </div>
-        <div id="game-status"></div>
-    </div>
+def play_game():
+    """Runs the Snake and Ladder game between a human and the computer."""
+    human_position = 0
+    computer_position = 0
+    
+    while True:
+        input("\n🎲 Your turn! Press Enter to roll the dice...")
+        dice_value = roll_dice()
+        print(f"You rolled a {dice_value}.")
+        human_position = move_player(human_position, dice_value)
+        print(f"📍 Your new position: {human_position}")
+        
+        if human_position == 100:
+            print("\n🎉 Congratulations! You won the game! 🎉")
+            break
+        
+        # Computer's turn
+        print("\n🤖 Computer's turn...")
+        dice_value = roll_dice()
+        print(f"Computer rolled a {dice_value}.")
+        computer_position = move_player(computer_position, dice_value)
+        print(f"📍 Computer's new position: {computer_position}")
+        
+        if computer_position == 100:
+            print("\n🤖 Computer wins! Better luck next time! 🤖")
+            break
 
-    <script>
-        async function rollDice() {
-            const response = await fetch('/roll', { method: 'POST' });
-            const data = await response.json();
-            document.getElementById('human-position').textContent = data.human_position;
-            document.getElementById('computer-position').textContent = data.computer_position;
-            document.getElementById('game-status').innerHTML = data.message.replace(/\n/g, '<br>');
-            if (data.game_over) {
-                document.querySelector('button').disabled = true;
-            }
-        }
-    </script>
-</body>
-</html>
+print("🎮 Game function ready! Run `play_game()` to start.")
