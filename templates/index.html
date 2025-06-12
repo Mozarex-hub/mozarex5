@@ -1,33 +1,22 @@
-Your turn! Press Enter to roll the dice... [User presses Enter]
-You rolled a 4.
-Yay! Climbed a ladder at 4. Up to 14.
-Your new position: 14
-
-Computer's turn...
-Computer rolled a 6.
-Computer's new position: 6
-
-Your turn! Press Enter to roll the dice... [User presses Enter]
-You rolled a 3.
-Your new position: 17
-
-Computer's turn...
-Computer rolled a 5.
-Computer's new position: 11
-
-Your turn! Press Enter to roll the dice... [User presses Enter]
-You rolled a 4.
-Yay! Climbed a ladder at 21. Up to 42.
-Your new position: 42
-
-Computer's turn...
-Computer rolled a 5.
-Oops! Bitten by a snake at 16. Down to 6.
-Computer's new position: 6
-
-[... Game continues until a player reaches 100 ...]
-
-Your turn! Press Enter to roll the dice... [User presses Enter]
-You rolled a 6.
-Your new position: 100
-🎉 Congratulations! You won the game! 🎉
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake and Ladder Game</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Snake and Ladder Game</h1>
+        <p>Click to roll the dice and play against the computer!</p>
+        <button onclick="rollDice()">Roll Dice</button>
+        <div id="positions">
+            <p>Human Position: <span id="human-position">0</span></p>
+            <p>Computer Position: <span id="computer-position">0</span></p>
+        </div>
+        <div id="game-status"></div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
