@@ -4,19 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake and Ladder Game</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="game-container">
-        <h1>Snake and Ladder Game</h1>
-        <p>Click to roll the dice and play against the computer!</p>
-        <button onclick="rollDice()">Roll Dice</button>
-        <div id="positions">
-            <p>Human Position: <span id="human-position">0</span></p>
-            <p>Computer Position: <span id="computer-position">0</span></p>
-        </div>
-        <div id="game-status"></div>
-    </div>
-    <script src="/static/js/script.js"></script>
+    <h1>🎲 Snake and Ladder Game 🎲</h1>
+    <button onclick="rollDice()">Roll Dice</button>
+    <p id="dice-result">Click the button to roll!</p>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
