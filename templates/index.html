@@ -1,28 +1,33 @@
-def play_game():
-    """Runs the Snake and Ladder game between a human and the computer."""
-    human_position = 0
-    computer_position = 0
-    
-    while True:
-        input("\n🎲 Your turn! Press Enter to roll the dice...")
-        dice_value = roll_dice()
-        print(f"You rolled a {dice_value}.")
-        human_position = move_player(human_position, dice_value)
-        print(f"📍 Your new position: {human_position}")
-        
-        if human_position == 100:
-            print("\n🎉 Congratulations! You won the game! 🎉")
-            break
-        
-        # Computer's turn
-        print("\n🤖 Computer's turn...")
-        dice_value = roll_dice()
-        print(f"Computer rolled a {dice_value}.")
-        computer_position = move_player(computer_position, dice_value)
-        print(f"📍 Computer's new position: {computer_position}")
-        
-        if computer_position == 100:
-            print("\n🤖 Computer wins! Better luck next time! 🤖")
-            break
+Your turn! Press Enter to roll the dice... [User presses Enter]
+You rolled a 4.
+Yay! Climbed a ladder at 4. Up to 14.
+Your new position: 14
 
-print("🎮 Game function ready! Run `play_game()` to start.")
+Computer's turn...
+Computer rolled a 6.
+Computer's new position: 6
+
+Your turn! Press Enter to roll the dice... [User presses Enter]
+You rolled a 3.
+Your new position: 17
+
+Computer's turn...
+Computer rolled a 5.
+Computer's new position: 11
+
+Your turn! Press Enter to roll the dice... [User presses Enter]
+You rolled a 4.
+Yay! Climbed a ladder at 21. Up to 42.
+Your new position: 42
+
+Computer's turn...
+Computer rolled a 5.
+Oops! Bitten by a snake at 16. Down to 6.
+Computer's new position: 6
+
+[... Game continues until a player reaches 100 ...]
+
+Your turn! Press Enter to roll the dice... [User presses Enter]
+You rolled a 6.
+Your new position: 100
+🎉 Congratulations! You won the game! 🎉
