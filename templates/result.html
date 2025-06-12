@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Result</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Dice Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="result-container">
-        <h1>Snake and Ladder Game Result</h1>
-        <p class="winner">{{ winner }}!</p>
-        <p>Human Final Position: {{ human_position }}</p>
-        <p>Computer Final Position: {{ computer_position }}</p>
-        <p>{{ message | safe }}</p>
-        <button onclick="window.location.href='/'">Play Again</button>
-    </div>
+    <h1>🎲 Dice Roll Result 🎲</h1>
+    <p>You rolled a <strong>{{ dice_value }}</strong>!</p>
+    <a href="/">Roll Again</a>
 </body>
 </html>
