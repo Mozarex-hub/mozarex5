@@ -30,7 +30,7 @@ button {
     border: none;
     border-radius: 5px;
 }
-button:hover9 {
+button:hover {
     background-color: #45a049;
 }
 #game-status {
