@@ -1,338 +1,69 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>تخمین طول عمر توسط MOZAREX™</title>
-    <!-- Imported Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake and Ladder Game</title>
     <style>
-      :root {
-        --primary-color: #27ae60;
-        --secondary-color: #2ecc71;
-        --accent-color: #ff7675;
-        --luxury-color: #d4af37; /* Gold accent */
-        --bg-gradient-start: #0f2027;
-        --bg-gradient-middle: #203a43;
-        --bg-gradient-end: #2c5364;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        direction: rtl;
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(to left, var(--bg-gradient-start), var(--bg-gradient-middle), var(--bg-gradient-end));
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      .container {
-        width: 90%;
-        max-width: 750px;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        border-radius: 16px;
-        padding: 30px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-        color: #f0f0f0;
-        animation: fadeIn 1s ease-in-out;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      .title-box {
-        text-align: center;
-        padding: 20px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #2980b9, #6dd5fa);
-        color: #ffffff;
-        margin-bottom: 30px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      }
-
-      .title-box h1 {
-        font-family: 'Cinzel', serif;
-        font-size: 2.2rem;
-        font-weight: 700;
-      }
-
-      .title-box p {
-        font-size: 1rem;
-        margin-top: 5px;
-      }
-
-      h2 {
-        color: var(--accent-color);
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin: 30px 0 15px;
-      }
-
-      /* Fieldset styling for question grouping */
-      fieldset {
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 16px;
-        margin-bottom: 20px;
-        padding: 20px;
-      }
-
-      legend {
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: var(--accent-color);
-        padding: 0 10px;
-      }
-
-      /* Additional section header with luxury accent (for internal grouping inside a fieldset if needed) */
-      .luxury-header {
-        color: var(--luxury-color);
-        font-size: 1.6rem;
-        font-weight: 600;
-        margin: 30px 0 15px;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-      }
-
-      label {
-        display: block;
-        margin-top: 12px;
-        font-size: 1rem;
-        font-weight: 400;
-      }
-
-      input[type="text"],
-      input[type="number"] {
-        width: 100%;
-        padding: 12px;
-        margin-top: 8px;
-        border: none;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.2);
-        color: #f0f0f0;
-        font-size: 1rem;
-        transition: background 0.3s;
-      }
-
-      input[type="text"]:focus,
-      input[type="number"]:focus {
-        background: rgba(255, 255, 255, 0.3);
-      }
-
-      .radio-group {
-        display: flex;
-        gap: 15px;
-        margin-top: 10px;
-      }
-
-      .radio-group input[type="radio"] {
-        display: none;
-      }
-
-      .radio-group label {
-        padding: 10px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s, color 0.3s;
-        background: rgba(255, 255, 255, 0.2);
-        font-size: 1rem;
-      }
-
-      .radio-group input[type="radio"]:checked + label {
-        background: var(--primary-color);
-        color: #ffffff;
-      }
-
-      /* Styling for Yes/No Tabs */
-      .tab {
-        display: inline-block;
-        padding: 8px 16px;
-        border-radius: 8px;
-        color: #fff;
-        font-size: 1rem;
-      }
-      .tab-yes {
-        background-color: var(--primary-color);
-      }
-      .tab-no {
-        background-color: var(--accent-color);
-      }
-
-      /* Additional questions styling (for inner luxury questions) */
-      .question-item {
-        margin-top: 20px;
-      }
-
-      .question-item p {
-        font-size: 1rem;
-        font-weight: 500;
-      }
-
-      .instruction-text {
-        display: block;
-        font-size: 0.85rem;
-        color: var(--luxury-color);
-        font-style: italic;
-        margin-bottom: 8px;
-      }
-
-      .submit-container {
-        text-align: center;
-        margin-top: 30px;
-      }
-
-      input[type="submit"] {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: #fff;
-        padding: 14px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1.1rem;
-        width: 60%;
-        transition: background 0.3s, transform 0.3s;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      }
-
-      input[type="submit"]:hover {
-        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-        transform: translateY(-3px);
-      }
-
-      .logo-container {
-        text-align: center;
-        margin-top: 30px;
-      }
-
-      .logo {
-        width: 120px;
-        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
-      }
-
-      .footer {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 0.8rem;
-        color: #dfe6e9;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .game-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #game-status {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        #positions {
+            margin-top: 20px;
+            font-size: 16px;
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="title-box">
-        <h1>تخمین طول عمر توسط MOZAREX™</h1>
-        <p>version 1.2</p>
-      </div>
-      <form method="post">
-        <!-- Question Group: Genetics -->
-        <fieldset>
-          <legend>سابقه خانوادگی و ژنتیک</legend>
-          <label>آیا هر دو والدین شما به سن ۸۵ سال یا بیشتر رسیده‌اند؟</label>
-          <div class="radio-group">
-            <input type="radio" id="family_yes" name="family_history" value="بله" required>
-            <label for="family_yes" class="tab tab-yes">بله</label>
-            <input type="radio" id="family_no" name="family_history" value="خیر" required>
-            <label for="family_no" class="tab tab-no">خیر</label>
-          </div>
-        </fieldset>
-
-        <!-- Question Group: Lifestyle -->
-        <fieldset>
-          <legend>عادات زندگی</legend>
-          <label for="exercise">تعداد روزهای هفته که ورزش و فعالیت بدنی دارید:</label>
-          <input type="number" id="exercise" name="exercise" min="0" max="7" required>
-          <label>آیا سیگار می‌کشید؟</label>
-          <div class="radio-group">
-            <input type="radio" id="smoking_yes" name="smoking" value="بله" required>
-            <label for="smoking_yes" class="tab tab-yes">بله</label>
-            <input type="radio" id="smoking_no" name="smoking" value="خیر" required>
-            <label for="smoking_no" class="tab tab-no">خیر</label>
-          </div>
-          <label for="alcohol">میزان مصرف الکل (روز در هفته):</label>
-          <input type="number" id="alcohol" name="alcohol" min="0" max="20" required>
-        </fieldset>
-
-        <!-- Question Group: Environmental Factors -->
-        <fieldset>
-          <legend>عوامل محیطی</legend>
-          <label for="pollution">میزان آلودگی هوای محل زندگی (از ۱ تا ۱۰):</label>
-          <input type="number" id="pollution" name="pollution" min="1" max="10" required>
-          <label for="healthcare">تعداد مراجعات به پزشک در سال:</label>
-          <input type="number" id="healthcare" name="healthcare" min="0" max="50" required>
-        </fieldset>
-
-        <!-- Question Group: Social & Psychological -->
-        <fieldset>
-          <legend>روابط اجتماعی و احساسات</legend>
-          <label for="social">تعداد روزهای ارتباط اجتماعی با دوستان و آشنایان (در هفته):</label>
-          <input type="number" id="social" name="social" min="0" max="7" required>
-          <label for="stress">متوسط سطح استرس شما (از ۱ تا ۱۰):</label>
-          <input type="number" id="stress" name="stress" min="1" max="10" required>
-        </fieldset>
-
-        <!-- Question Group: Additional Luxury Questions -->
-        <fieldset>
-          <legend>سؤالات روانشناختی</legend>
-          <div class="question-item">
-            <p><strong>۱.</strong> از کیفیت تغذیه روزانه خود چقدر رضایت دارید؟</p>
-            <span class="instruction-text">انتخاب کنید: از ۱ (بسیار ناراضی) تا ۱۰ (بسیار راضی).</span>
-            <input type="number" name="nutrition" min="1" max="10" required>
-          </div>
-          <div class="question-item">
-            <p><strong>۲.</strong> کیفیت خواب شبانه شما چگونه ارزیابی می‌شود؟</p>
-            <span class="instruction-text">انتخاب کنید: از ۱ (ضعیف) تا ۱۰ (عالی).</span>
-            <input type="number" name="sleep_quality" min="1" max="10" required>
-          </div>
-          <div class="question-item">
-            <p><strong>۳.</strong> از سبک زندگی کلی خود چقدر رضایت دارید؟</p>
-            <span class="instruction-text">انتخاب کنید: از ۱ (خیلی کم) تا ۱۰ (بسیار زیاد).</span>
-            <input type="number" name="lifestyle" min="1" max="10" required>
-          </div>
-          <div class="question-item">
-            <p><strong>۴.</strong> احساس تعادل و آرامش ذهنی شما چگونه است؟</p>
-            <span class="instruction-text">انتخاب کنید: از ۱ (خیلی نامتعادل) تا ۱۰ (کاملاً متعادل).</span>
-            <input type="number" name="mental_balance" min="1" max="10" required>
-          </div>
-          <div class="question-item">
-            <p><strong>۵.</strong> چقدر از فعالیت‌های تفریحی و سرگرمی خود لذت می‌برید؟</p>
-            <span class="instruction-text">انتخاب کنید: از ۱ (بسیار کم) تا ۱۰ (بسیار زیاد).</span>
-            <input type="number" name="entertainment" min="1" max="10" required>
-          </div>
-          <div class="question-item">
-            <p><strong>۶.</strong> سطح رضایت شما از محیط کار یا تحصیلی چقدر است؟</p>
-            <span class="instruction-text">انتخاب کنید: از ۱ (کاملاً ناراضی) تا ۱۰ (کاملاً راضی).</span>
-            <input type="number" name="work_env" min="1" max="10" required>
-          </div>
-          <div class="question-item">
-            <p><strong>۷.</strong> تجربه کلی شما از استفاده از فناوری‌های نوین تا به حال چگونه بوده است؟</p>
-            <span class="instruction-text">انتخاب کنید: از ۱ (خیلی منفی) تا ۱۰ (بسیار مثبت).</span>
-            <input type="number" name="tech_experience" min="1" max="10" required>
-          </div>
-          <div class="question-item">
-            <p><strong>۸.</strong> چقدر به موفقیت‌های پیش روی خود اطمینان دارید؟</p>
-            <span class="instruction-text">انتخاب کنید: از ۱ (خیلی کم) تا ۱۰ (بسیار زیاد).</span>
-            <input type="number" name="self_belief" min="1" max="10" required>
-          </div>
-        </fieldset>
-
-        <div class="submit-container">
-          <input type="submit" value="ارسال و تحلیل داده ها">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Snake and Ladder Game</h1>
+        <p>Click to roll the dice and play against the computer!</p>
+        <button onclick="rollDice()">Roll Dice</button>
+        <div id="positions">
+            <p>Human Position: <span id="human-position">0</span></p>
+            <p>Computer Position: <span id="computer-position">0</span></p>
         </div>
-      </form>
-      <div class="logo-container">
-        <img src="/static/logo.jpeg" alt="Logo" class="logo">
-      </div>
-      <div class="footer">
-        &copy; 2025 MOZAREX™. تمام حقوق محفوظ است.
-      </div>
+        <div id="game-status"></div>
     </div>
-  </body>
+
+    <script>
+        async function rollDice() {
+            const response = await fetch('/roll', { method: 'POST' });
+            const data = await response.json();
+            document.getElementById('human-position').textContent = data.human_position;
+            document.getElementById('computer-position').textContent = data.computer_position;
+            document.getElementById('game-status').innerHTML = data.message.replace(/\n/g, '<br>');
+            if (data.game_over) {
+                document.querySelector('button').disabled = true;
+            }
+        }
+    </script>
+</body>
 </html>
